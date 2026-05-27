@@ -1,0 +1,20 @@
+services:
+
+- type: web
+  name: signal-dashboard
+
+  env: python
+
+  buildCommand: pip install -r requirements.txt
+
+  startCommand: uvicorn dashboard:app --host 0.0.0.0 --port 10000
+
+
+- type: worker
+  name: signal-bot
+
+  env: python
+
+  buildCommand: pip install -r requirements.txt
+
+  startCommand: python main.py
