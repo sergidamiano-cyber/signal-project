@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>SIGNAL Dashboard</title>
+
+    <style>
+
+        body {
+
+            font-family: Arial;
+
+            background: #f5f5f5;
+
+            padding: 40px;
+        }
+
+        h1 {
+
+            color: #222;
+        }
+
+        .card {
+
+            background: white;
+
+            padding: 20px;
+
+            margin-bottom: 20px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            background: white;
+        }
+
+        th, td {
+
+            padding: 12px;
+
+            border-bottom: 1px solid #ddd;
+
+            text-align: left;
+        }
+
+        th {
+
+            background: #222;
+
+            color: white;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>SIGNAL Dashboard</h1>
+
+<div class="card">
+
+    <h2>Messaggi Analizzati</h2>
+
+    <h3>{{ total }}</h3>
+
+</div>
+
+<div class="card">
+
+    <h2>Messaggi a Rischio</h2>
+
+    <h3>{{ risk }}</h3>
+
+</div>
+
+<div class="card">
+
+    <h2>Tossicità Media</h2>
+
+    <h3>{{ avg }}%</h3>
+
+</div>
+
+<div class="card">
+
+    <h2>Ultimi Eventi</h2>
+
+    <table>
+
+        <tr>
+            <th>Utente</th>
+            <th>Messaggio</th>
+            <th>Tossicità</th>
+        </tr>
+
+        {% for item in latest %}
+
+        <tr>
+
+            <td>{{ item.username }}</td>
+
+            <td>{{ item.original_message }}</td>
+
+           <td>{{ item.toxicity }}%</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+
+</html>
